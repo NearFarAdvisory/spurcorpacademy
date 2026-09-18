@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started · Spur Corp Brand Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #181F23;
+    --off-white: #F5F3F2;
+    --crimson: #B51D28;
+    --blue: #5683CA;
+    --pink: #F59AE3;
+    --mid: #6B7A80;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--off-white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Header ─── */
+  header {
+    background: var(--ink);
+    padding: 32px 24px 28px;
+    text-align: center;
+  }
+
+  .mark {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-start;
+    width: 180px;
+    margin: 0 auto 20px;
+  }
+
+  .mark-bar {
+    height: 36px;
+    border-radius: 7px;
+  }
+
+  .bar-1 { width: 147px; background: var(--blue); }
+  .bar-2 { width: 131px; background: var(--crimson); }
+  .bar-3 { width: 160px; background: var(--pink); }
+  .bar-4 { width: 52px;  background: var(--off-white); }
+
+  .header-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.2;
+  }
+
+  /* ─── Colour rule ─── */
+  .colour-rule {
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--crimson) 50%, var(--pink) 100%);
+  }
+
+  /* ─── Main content ─── */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+
+  .intro {
+    margin-bottom: 48px;
+  }
+
+  .intro p {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .intro strong {
+    font-weight: 600;
+  }
+
+  /* ─── Section ─── */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    color: #fff;
+  }
+
+  .pill-blue   { background: var(--blue); }
+  .pill-crimson { background: var(--crimson); }
+  .pill-pink   { background: var(--pink); color: var(--ink); }
+
+  .section-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ─── Checklist ─── */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid rgba(24,31,35,0.08);
+  }
+
+  .check-box {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid rgba(24,31,35,0.2);
+    margin-top: 1px;
+    background: transparent;
+  }
+
+  .check-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .check-text strong {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .check-text span {
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 300;
+  }
+
+  /* ─── Pilot callout ─── */
+  .pilot-callout {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+    margin-bottom: 48px;
+  }
+
+  .pilot-callout .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 10px;
+  }
+
+  .pilot-callout h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 12px;
+  }
+
+  .pilot-callout ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pilot-callout ul li {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,243,242,0.85);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .pilot-callout ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--crimson);
+  }
+
+  .pilot-callout ul li strong {
+    color: var(--off-white);
+    font-weight: 600;
+  }
+
+  /* ─── Module grid ─── */
+  .modules {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .module-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid rgba(24,31,35,0.08);
+  }
+
+  .module-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .module-num.blue   { background: var(--blue); }
+  .module-num.crimson { background: var(--crimson); }
+  .module-num.pink   { background: var(--pink); color: var(--ink); }
+
+  .module-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .module-info p {
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* ─── Pink accent bar ─── */
+  .accent-bar {
+    width: 40px;
+    height: 4px;
+    background: var(--pink);
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* ─── CTA ─── */
+  .cta-block {
+    margin-top: 56px;
+    text-align: center;
+  }
+
+  .cta-block p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--crimson);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--ink);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-mark {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    width: 100px;
+    margin: 0 auto 16px;
+  }
+
+  .footer-bar { height: 20px; border-radius: 4px; }
+  .fb-1 { width: 82px; background: var(--blue); }
+  .fb-2 { width: 73px; background: var(--crimson); }
+  .fb-3 { width: 89px; background: var(--pink); }
+  .fb-4 { width: 29px; background: var(--off-white); }
+
+  footer p {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(245,243,242,0.5);
+  }
+
+  footer a {
+    color: rgba(245,243,242,0.7);
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 36px 16px 56px; }
+    header { padding: 28px 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark" aria-hidden="true">
+    <div class="mark-bar bar-1"></div>
+    <div class="mark-bar bar-2"></div>
+    <div class="mark-bar bar-3"></div>
+    <div class="mark-bar bar-4"></div>
+  </div>
+  <p class="header-eyebrow">Spur Corp · Brand Academy</p>
+  <h1 class="header-title">Getting started.</h1>
+</header>
+
+<div class="colour-rule" aria-hidden="true"></div>
+
+<main>
+
+  <div class="intro">
+    <p>You are part of the first cohort to go through the Spur Corp Brand Academy. This checklist covers everything you need to do before your first module and what to expect once you are inside.</p>
+  </div>
+
+  <!-- Pilot callout -->
+  <div class="pilot-callout">
+    <p class="eyebrow">Pilot Group · September 2026</p>
+    <h3>A few things specific to this round.</h3>
+    <ul>
+      <li><strong>Brand in scope:</strong> Spur Steak Ranches only for this pilot.</li>
+      <li><strong>Deadline:</strong> Complete all modules by <strong>Tuesday COB.</strong></li>
+      <li><strong>Certificate:</strong> Not issued at this stage. Full accreditation follows the formal launch.</li>
+      <li><strong>Questions:</strong> Send anything to <strong><a href="mailto:admin@spurcorpacademy.com" style="color:inherit;">admin@spurcorpacademy.com</a></strong></li>
+    </ul>
+  </div>
+
+  <!-- Section 1: Account -->
+  <div class="section">
+    <div class="section-label">
+      <span class="pill pill-blue">01</span>
+      <span class="section-title">Set up your account.</span>
+    </div>
+    <ul class="checklist">
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Check your inbox</strong>
+          <span>Your enrolment confirmation came from admin@spurcorpacademy.com. If it is not there, check your spam folder.</span>
+        </div>
+      </li>
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Activate your account</strong>
+          <span>Click the link in your enrolment email to set your password and log in for the first time.</span>
+        </div>
+      </li>
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Confirm you can access the course</strong>
+          <span>Once logged in, the Spur Corp Brand Academy course should appear on your dashboard. Click into it to confirm access.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 2: Before you start -->
+  <div class="section">
+    <div class="section-label">
+      <span class="pill pill-crimson">02</span>
+      <span class="section-title">Before you start.</span>
+    </div>
+    <ul class="checklist">
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Set aside uninterrupted time</strong>
+          <span>The full programme is approximately 2.5 hours. You can complete it across multiple sessions — it saves your progress automatically.</span>
+        </div>
+      </li>
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Use a desktop or laptop</strong>
+          <span>The course is optimised for desktop. Some visual comparison exercises may be harder to navigate on mobile.</span>
+        </div>
+      </li>
+      <li>
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Have your headphones handy</strong>
+          <span>Several modules include video with voiceover. Audio helps significantly with the learning.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 3: What's inside -->
+  <div class="section">
+    <div class="section-label">
+      <span class="pill pill-pink">03</span>
+      <span class="section-title">What you will cover.</span>
+    </div>
+    <div class="modules">
+      <div class="module-item">
+        <div class="module-num blue">01</div>
+        <div class="module-info">
+          <h4>Know the Brand</h4>
+          <p>What Spur Steak Ranches stands for, who it speaks to, and the emotional territory it owns.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num blue">02</div>
+        <div class="module-info">
+          <h4>Recognise the Brand</h4>
+          <p>Visual identity, tone, and the specific elements that make Spur content immediately identifiable.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num blue">03</div>
+        <div class="module-info">
+          <h4>Connect with the Audience</h4>
+          <p>Platform behaviour, content formats, and how to match the brand to the moment.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num crimson">04</div>
+        <div class="module-info">
+          <h4>Apply the Brand</h4>
+          <p>Real briefs, real decisions. Practise creating content that fits the brand standard.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num crimson">05</div>
+        <div class="module-info">
+          <h4>Protect the Brand</h4>
+          <p>Brand safety, escalation paths, and the Traffic Light System for content review.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num pink">06</div>
+        <div class="module-info">
+          <h4>Prove the Brand</h4>
+          <p>Your final assessment. Demonstrate what you know and complete your accreditation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="accent-bar" style="margin: 0 auto 20px;"></div>
+    <p>Everything set? Head into the course.</p>
+    <a class="cta-btn" href="https://learn.spurcorpacademy.com/products/courses/spurcorp-brand-academy?th__ug=2b0b2f77">Go to the Academy ↗</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-mark" aria-hidden="true">
+    <div class="footer-bar fb-1"></div>
+    <div class="footer-bar fb-2"></div>
+    <div class="footer-bar fb-3"></div>
+    <div class="footer-bar fb-4"></div>
+  </div>
+  <p>Spur Corp Brand Academy · <a href="mailto:admin@spurcorpacademy.com">admin@spurcorpacademy.com</a></p>
+</footer>
+
+</body>
+</html>
