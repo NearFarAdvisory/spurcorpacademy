@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Feedback · Spur Corp Brand Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #181F23;
+    --off-white: #F5F3F2;
+    --crimson: #B51D28;
+    --blue: #5683CA;
+    --pink: #F59AE3;
+    --mid: #6B7A80;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--off-white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Header ─── */
+  header {
+    background: var(--ink);
+    padding: 32px 24px 28px;
+    text-align: center;
+  }
+
+  .mark {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-start;
+    width: 180px;
+    margin: 0 auto 20px;
+  }
+
+  .mark-bar { height: 36px; border-radius: 7px; }
+  .bar-1 { width: 147px; background: var(--blue); }
+  .bar-2 { width: 131px; background: var(--crimson); }
+  .bar-3 { width: 160px; background: var(--pink); }
+  .bar-4 { width: 52px;  background: var(--off-white); }
+
+  .header-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.2;
+  }
+
+  /* ─── Colour rule ─── */
+  .colour-rule {
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--crimson) 50%, var(--pink) 100%);
+  }
+
+  /* ─── Main ─── */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+
+  .intro {
+    margin-bottom: 40px;
+  }
+
+  .intro p {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ─── Form sections ─── */
+  .form-section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    color: #fff;
+  }
+
+  .pill-blue    { background: var(--blue); }
+  .pill-crimson { background: var(--crimson); }
+  .pill-pink    { background: var(--pink); color: var(--ink); }
+
+  .section-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ─── Field groups ─── */
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  label .optional {
+    font-weight: 300;
+    color: var(--mid);
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid rgba(24,31,35,0.18);
+    border-radius: 8px;
+    padding: 12px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--blue);
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  /* ─── Rating rows ─── */
+  .rating-card {
+    background: #fff;
+    border: 1px solid rgba(24,31,35,0.08);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .rating-label {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .rating-stars input[type="radio"] {
+    display: none;
+  }
+
+  .rating-stars label {
+    font-size: 22px;
+    cursor: pointer;
+    color: rgba(24,31,35,0.15);
+    transition: color 0.1s;
+    line-height: 1;
+  }
+
+  /* Star highlight: fill stars up to and including the checked one */
+  .rating-stars:has(input:checked) label { color: rgba(24,31,35,0.15); }
+  .rating-stars input:checked ~ label   { color: rgba(24,31,35,0.15); }
+  .rating-stars label:has(~ input:checked),
+  .rating-stars label:has(~ input:checked) ~ label:not(:has(~ input:checked)) { color: #F5A623; }
+  .rating-stars input:checked + label { color: #F5A623; }
+
+  /* Simpler approach: use JS for star colouring */
+  .star-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(24,31,35,0.15);
+    padding: 2px;
+    line-height: 1;
+    transition: color 0.1s, transform 0.1s;
+  }
+
+  .star-btn:hover,
+  .star-btn.active {
+    color: #F5A623;
+  }
+
+  .star-btn:hover { transform: scale(1.15); }
+
+  .rating-hint {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--mid);
+    font-weight: 300;
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    height: 1px;
+    background: rgba(24,31,35,0.08);
+    margin: 8px 0 0;
+  }
+
+  /* ─── Submit ─── */
+  .submit-block {
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  .submit-btn {
+    display: inline-block;
+    background: var(--crimson);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .submit-btn:hover { opacity: 0.88; }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .submit-note {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    margin-top: 12px;
+  }
+
+  /* ─── Thank you state ─── */
+  .thankyou {
+    display: none;
+    text-align: center;
+    padding: 64px 24px;
+  }
+
+  .thankyou-mark {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    width: 80px;
+    margin: 0 auto 28px;
+  }
+
+  .ty-bar { height: 16px; border-radius: 4px; }
+  .ty-1 { width: 65px; background: var(--blue); }
+  .ty-2 { width: 58px; background: var(--crimson); }
+  .ty-3 { width: 72px; background: var(--pink); }
+
+  .thankyou h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .thankyou p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--mid);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--ink);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-mark {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    width: 100px;
+    margin: 0 auto 16px;
+  }
+
+  .footer-bar { height: 20px; border-radius: 4px; }
+  .fb-1 { width: 82px; background: var(--blue); }
+  .fb-2 { width: 73px; background: var(--crimson); }
+  .fb-3 { width: 89px; background: var(--pink); }
+  .fb-4 { width: 29px; background: var(--off-white); }
+
+  footer p {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(245,243,242,0.5);
+  }
+
+  footer a { color: rgba(245,243,242,0.7); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    main { padding: 36px 16px 56px; }
+    header { padding: 28px 16px 24px; }
+    .rating-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark" aria-hidden="true">
+    <div class="mark-bar bar-1"></div>
+    <div class="mark-bar bar-2"></div>
+    <div class="mark-bar bar-3"></div>
+    <div class="mark-bar bar-4"></div>
+  </div>
+  <p class="header-eyebrow">Spur Corp · Brand Academy</p>
+  <h1 class="header-title">Course feedback.</h1>
+</header>
+
+<div class="colour-rule" aria-hidden="true"></div>
+
+<main>
+
+  <div id="form-wrap">
+
+    <div class="intro">
+      <p>Thank you for completing the pilot. Your honest feedback shapes the Academy before it goes to a wider audience — please tell us what worked, what was unclear and what needs improving.</p>
+    </div>
+
+    <form id="feedback-form" action="https://formspree.io/f/mvkpqweb" method="POST">
+
+      <input type="hidden" name="_subject" value="Brand Academy — Pilot Feedback">
+      <input type="hidden" name="form_type" value="pilot_feedback">
+
+      <!-- Section 01: About you -->
+      <div class="form-section">
+        <div class="section-label">
+          <span class="pill pill-blue">01</span>
+          <span class="section-title">About you.</span>
+        </div>
+        <div class="field-group">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="First and last name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="The address you used to log in" required>
+          </div>
+          <div class="field">
+            <label for="agency">Agency or organisation</label>
+            <input type="text" id="agency" name="agency" placeholder="e.g. Lamb Agency">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 02: Ratings -->
+      <div class="form-section">
+        <div class="section-label">
+          <span class="pill pill-crimson">02</span>
+          <span class="section-title">Rate the course.</span>
+        </div>
+        <div class="field-group">
+
+          <div class="rating-card">
+            <span class="rating-label">Content quality</span>
+            <div class="rating-stars" id="stars-content">
+              <button type="button" class="star-btn" data-group="rating_content" data-val="1" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-group="rating_content" data-val="2" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_content" data-val="3" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_content" data-val="4" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_content" data-val="5" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" name="rating_content" id="rating_content" required>
+          </div>
+
+          <div class="rating-card">
+            <span class="rating-label">Examples and visuals</span>
+            <div class="rating-stars" id="stars-visuals">
+              <button type="button" class="star-btn" data-group="rating_visuals" data-val="1" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-group="rating_visuals" data-val="2" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_visuals" data-val="3" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_visuals" data-val="4" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_visuals" data-val="5" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" name="rating_visuals" id="rating_visuals" required>
+          </div>
+
+          <div class="rating-card">
+            <span class="rating-label">Navigation and ease of use</span>
+            <div class="rating-stars" id="stars-navigation">
+              <button type="button" class="star-btn" data-group="rating_navigation" data-val="1" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-group="rating_navigation" data-val="2" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_navigation" data-val="3" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_navigation" data-val="4" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_navigation" data-val="5" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" name="rating_navigation" id="rating_navigation" required>
+          </div>
+
+          <div class="rating-card">
+            <span class="rating-label">Usefulness in day-to-day work</span>
+            <div class="rating-stars" id="stars-usefulness">
+              <button type="button" class="star-btn" data-group="rating_usefulness" data-val="1" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-group="rating_usefulness" data-val="2" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_usefulness" data-val="3" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_usefulness" data-val="4" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_usefulness" data-val="5" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" name="rating_usefulness" id="rating_usefulness" required>
+          </div>
+
+          <div class="rating-card">
+            <span class="rating-label">Overall experience</span>
+            <div class="rating-stars" id="stars-overall">
+              <button type="button" class="star-btn" data-group="rating_overall" data-val="1" aria-label="1 star">★</button>
+              <button type="button" class="star-btn" data-group="rating_overall" data-val="2" aria-label="2 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_overall" data-val="3" aria-label="3 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_overall" data-val="4" aria-label="4 stars">★</button>
+              <button type="button" class="star-btn" data-group="rating_overall" data-val="5" aria-label="5 stars">★</button>
+            </div>
+            <input type="hidden" name="rating_overall" id="rating_overall" required>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 03: Open feedback -->
+      <div class="form-section">
+        <div class="section-label">
+          <span class="pill pill-pink">03</span>
+          <span class="section-title">Tell us more.</span>
+        </div>
+        <div class="field-group">
+          <div class="field">
+            <label for="what_worked">What worked well?</label>
+            <textarea id="what_worked" name="what_worked" placeholder="Specific modules, examples, exercises or anything that stood out." required></textarea>
+          </div>
+          <div class="field">
+            <label for="what_unclear">What was unclear or confusing?</label>
+            <textarea id="what_unclear" name="what_unclear" placeholder="Anything you had to re-read, didn't follow, or felt was missing context." required></textarea>
+          </div>
+          <div class="field">
+            <label for="what_improve">What should we improve?</label>
+            <textarea id="what_improve" name="what_improve" placeholder="Content gaps, better examples needed, format changes, anything else." required></textarea>
+          </div>
+          <div class="field">
+            <label for="other">Anything else? <span class="optional">Optional</span></label>
+            <textarea id="other" name="other" placeholder="Any other thoughts, suggestions or questions." style="min-height:80px;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-block">
+        <button type="submit" class="submit-btn" id="submit-btn">Submit feedback</button>
+        <p class="submit-note">Your responses go directly to the Academy team.</p>
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- Thank you state -->
+  <div class="thankyou" id="thankyou">
+    <div class="thankyou-mark" aria-hidden="true">
+      <div class="ty-bar ty-1"></div>
+      <div class="ty-bar ty-2"></div>
+      <div class="ty-bar ty-3"></div>
+    </div>
+    <h2>Thank you.</h2>
+    <p>Your feedback has been received. We appreciate you taking the time to help shape the Academy.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-mark" aria-hidden="true">
+    <div class="footer-bar fb-1"></div>
+    <div class="footer-bar fb-2"></div>
+    <div class="footer-bar fb-3"></div>
+    <div class="footer-bar fb-4"></div>
+  </div>
+  <p>Spur Corp Brand Academy · <a href="mailto:admin@spurcorpacademy.com">admin@spurcorpacademy.com</a></p>
+</footer>
+
+<script>
+  // ─── Star rating logic ───
+  document.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.dataset.group;
+      const val   = parseInt(btn.dataset.val);
+      // Update hidden input
+      document.getElementById(group).value = val;
+      // Update visual state for this group
+      document.querySelectorAll(`.star-btn[data-group="${group}"]`).forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.val) <= val);
+      });
+    });
+  });
+
+  // ─── Form submission ───
+  const form   = document.getElementById('feedback-form');
+  const btn    = document.getElementById('submit-btn');
+  const wrap   = document.getElementById('form-wrap');
+  const thanks = document.getElementById('thankyou');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Check all star ratings are filled
+    const groups = ['rating_content','rating_visuals','rating_navigation','rating_usefulness','rating_overall'];
+    for (const g of groups) {
+      if (!document.getElementById(g).value) {
+        alert('Please rate all five areas before submitting.');
+        return;
+      }
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        wrap.style.display   = 'none';
+        thanks.style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      btn.disabled    = false;
+      btn.textContent = 'Submit feedback';
+      alert('Something went wrong. Please try again or email admin@spurcorpacademy.com.');
+    }
+  });
+</script>
+
+</body>
+</html>
