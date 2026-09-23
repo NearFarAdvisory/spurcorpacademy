@@ -29,24 +29,63 @@
   /* ─── Header ─── */
   header {
     background: var(--ink);
-    padding: 32px 24px 28px;
-    text-align: center;
+    padding: 20px 24px 36px;
   }
 
-  .mark {
+  .header-nav {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  /* ─── Wordmark ─── */
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .wm-bars {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 5px;
     align-items: flex-start;
-    width: 180px;
-    margin: 0 auto 20px;
+    flex-shrink: 0;
   }
 
-  .mark-bar { height: 36px; border-radius: 7px; }
-  .bar-1 { width: 147px; background: var(--blue); }
-  .bar-2 { width: 131px; background: var(--crimson); }
-  .bar-3 { width: 160px; background: var(--pink); }
-  .bar-4 { width: 52px;  background: var(--off-white); }
+  .wm-bar { border-radius: 3px; height: 13px; }
+  .wm-b1 { width: 50px; background: var(--blue); }
+  .wm-b2 { width: 44px; background: var(--crimson); }
+  .wm-b3 { width: 56px; background: var(--pink); }
+  .wm-b4 { width: 18px; background: rgba(245,243,242,0.65); }
+
+  .wm-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .wm-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .wm-sub {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,243,242,0.4);
+  }
+
+  /* ─── Header title ─── */
+  .header-title-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
 
   .header-eyebrow {
     font-size: 10px;
@@ -54,14 +93,14 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pink);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .header-title {
-    font-size: clamp(22px, 4vw, 30px);
+    font-size: clamp(26px, 5vw, 36px);
     font-weight: 700;
     color: var(--off-white);
-    line-height: 1.2;
+    line-height: 1.15;
   }
 
   /* ─── Colour rule ─── */
@@ -215,14 +254,6 @@
     line-height: 1;
   }
 
-  /* Star highlight: fill stars up to and including the checked one */
-  .rating-stars:has(input:checked) label { color: rgba(24,31,35,0.15); }
-  .rating-stars input:checked ~ label   { color: rgba(24,31,35,0.15); }
-  .rating-stars label:has(~ input:checked),
-  .rating-stars label:has(~ input:checked) ~ label:not(:has(~ input:checked)) { color: #F5A623; }
-  .rating-stars input:checked + label { color: #F5A623; }
-
-  /* Simpler approach: use JS for star colouring */
   .star-btn {
     background: none;
     border: none;
@@ -330,51 +361,96 @@
   /* ─── Footer ─── */
   footer {
     background: var(--ink);
-    padding: 32px 24px;
-    text-align: center;
+    padding: 24px 24px;
   }
 
-  .footer-mark {
+  .footer-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fw-bars {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
     align-items: flex-start;
-    width: 100px;
-    margin: 0 auto 16px;
   }
 
-  .footer-bar { height: 20px; border-radius: 4px; }
-  .fb-1 { width: 82px; background: var(--blue); }
-  .fb-2 { width: 73px; background: var(--crimson); }
-  .fb-3 { width: 89px; background: var(--pink); }
-  .fb-4 { width: 29px; background: var(--off-white); }
+  .fw-bar { border-radius: 2px; height: 10px; }
+  .fw-b1 { width: 36px; background: var(--blue); }
+  .fw-b2 { width: 32px; background: var(--crimson); }
+  .fw-b3 { width: 40px; background: var(--pink); }
+  .fw-b4 { width: 13px; background: rgba(245,243,242,0.3); }
 
-  footer p {
+  .fw-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .fw-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(245,243,242,0.65);
+    line-height: 1.1;
+  }
+
+  .fw-sub {
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,243,242,0.3);
+  }
+
+  .footer-contact {
     font-size: 12px;
     font-weight: 300;
-    color: rgba(245,243,242,0.5);
+    color: rgba(245,243,242,0.45);
   }
 
-  footer a { color: rgba(245,243,242,0.7); text-decoration: none; }
+  footer a { color: rgba(245,243,242,0.6); text-decoration: none; }
 
   @media (max-width: 480px) {
     main { padding: 36px 16px 56px; }
-    header { padding: 28px 16px 24px; }
+    header { padding: 20px 16px 32px; }
     .rating-card { flex-direction: column; align-items: flex-start; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="mark" aria-hidden="true">
-    <div class="mark-bar bar-1"></div>
-    <div class="mark-bar bar-2"></div>
-    <div class="mark-bar bar-3"></div>
-    <div class="mark-bar bar-4"></div>
+  <div class="header-nav">
+    <div class="wordmark">
+      <div class="wm-bars" aria-hidden="true">
+        <div class="wm-bar wm-b1"></div>
+        <div class="wm-bar wm-b2"></div>
+        <div class="wm-bar wm-b3"></div>
+        <div class="wm-bar wm-b4"></div>
+      </div>
+      <div class="wm-text">
+        <span class="wm-name">Brand Academy</span>
+        <span class="wm-sub">Spur Corporation</span>
+      </div>
+    </div>
   </div>
-  <p class="header-eyebrow">Spur Corp · Brand Academy</p>
-  <h1 class="header-title">Course feedback.</h1>
+  <div class="header-title-wrap">
+    <p class="header-eyebrow">Course feedback</p>
+    <h1 class="header-title">Tell us what you think.</h1>
+  </div>
 </header>
 
 <div class="colour-rule" aria-hidden="true"></div>
@@ -384,7 +460,7 @@
   <div id="form-wrap">
 
     <div class="intro">
-      <p>Thank you for completing the pilot. Your honest feedback shapes the Academy before it goes to a wider audience — please tell us what worked, what was unclear and what needs improving.</p>
+      <p>Thank you for taking part in the pilot. Your honest feedback shapes the Academy before it goes to a wider audience — please tell us what worked, what was unclear and what needs improving.</p>
     </div>
 
     <form id="feedback-form" action="https://formspree.io/f/mvkpqweb" method="POST">
@@ -534,13 +610,21 @@
 </main>
 
 <footer>
-  <div class="footer-mark" aria-hidden="true">
-    <div class="footer-bar fb-1"></div>
-    <div class="footer-bar fb-2"></div>
-    <div class="footer-bar fb-3"></div>
-    <div class="footer-bar fb-4"></div>
+  <div class="footer-inner">
+    <div class="footer-wordmark">
+      <div class="fw-bars" aria-hidden="true">
+        <div class="fw-bar fw-b1"></div>
+        <div class="fw-bar fw-b2"></div>
+        <div class="fw-bar fw-b3"></div>
+        <div class="fw-bar fw-b4"></div>
+      </div>
+      <div class="fw-text">
+        <span class="fw-name">Brand Academy</span>
+        <span class="fw-sub">Spur Corporation</span>
+      </div>
+    </div>
+    <p class="footer-contact"><a href="mailto:admin@spurcorpacademy.com">admin@spurcorpacademy.com</a></p>
   </div>
-  <p>Spur Corp Brand Academy · <a href="mailto:admin@spurcorpacademy.com">admin@spurcorpacademy.com</a></p>
 </footer>
 
 <script>
@@ -549,9 +633,7 @@
     btn.addEventListener('click', () => {
       const group = btn.dataset.group;
       const val   = parseInt(btn.dataset.val);
-      // Update hidden input
       document.getElementById(group).value = val;
-      // Update visual state for this group
       document.querySelectorAll(`.star-btn[data-group="${group}"]`).forEach(b => {
         b.classList.toggle('active', parseInt(b.dataset.val) <= val);
       });
@@ -567,7 +649,6 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Check all star ratings are filled
     const groups = ['rating_content','rating_visuals','rating_navigation','rating_usefulness','rating_overall'];
     for (const g of groups) {
       if (!document.getElementById(g).value) {
