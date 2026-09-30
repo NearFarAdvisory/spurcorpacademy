@@ -436,6 +436,30 @@
     }
 
     /* ── Footer ── */
+    .success-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 24px;
+      background: var(--crimson);
+      color: #fff;
+      border-radius: 6px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+
+    .success-btn:hover { background: #9A1820; }
+    .success-btn:active { transform: scale(0.99); }
+
+    #success-msg .access-help {
+      margin-top: 16px;
+      font-size: 0.8125rem;
+    }
+
     footer {
       background: var(--ink);
       padding: 28px 32px;
@@ -613,6 +637,8 @@
         <div class="success-bar"></div>
         <h3>You are registered.</h3>
         <p>We will confirm your access and brand scope after review.<br />Keep an eye on your inbox.</p>
+        <a class="success-btn" href="https://learn.spurcorpacademy.com/hub/library">Sign in to the Academy</a>
+        <p class="access-help">Trouble with access? Email <a href="mailto:ask@spurcorpacademy.com">ask@spurcorpacademy.com</a> with your brand and store names.</p>
       </div>
     </div>
   </section>
@@ -658,6 +684,9 @@
         if (resp.ok) {
           form.style.display       = 'none';
           successMsg.style.display = 'block';
+          window.setTimeout(function () {
+            window.location.assign('https://learn.spurcorpacademy.com/hub/library');
+          }, 6000);
         } else {
           btn.textContent = 'Register now';
           btn.disabled    = false;
