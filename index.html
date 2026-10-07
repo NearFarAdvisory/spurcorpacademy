@@ -530,8 +530,8 @@
     <div class="form-wrap">
       <div class="form-header">
         <h2>Register for access.</h2>
-        <p>We will confirm your access and brand scope after reviewing your registration. You do not need to register again.</p>
-        <p class="form-note">The form lists 10 portfolio brands so you can record your full scope. Seven Academy courses are currently available; your access confirmation will identify the pathways ready for you.</p>
+        <p>Complete the form once. Valid registrations automatically create your Academy access and enrol you in your selected live brand courses.</p>
+        <p class="form-note">Six brand courses are live: Spur Steak Ranches, Panarottis, John Dory’s, RocoMamas, The Hussar Grill and Casa Bella. Other portfolio courses are not open yet; email ask@spurcorpacademy.com if your brand is unavailable.</p>
       </div>
 
       <form id="reg-form" action="https://formspree.io/f/mvkpqweb" method="POST" novalidate>
@@ -607,16 +607,16 @@
             <input type="checkbox" name="brands[]" value="Casa Bella" />Casa Bella
           </label>
           <label class="brand-check">
-            <input type="checkbox" name="brands[]" value="Spur Grill and Go" />Spur Grill and Go
+            <input type="checkbox" name="brands[]" value="Spur Grill and Go" disabled />Spur Grill and Go — not open yet
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Piza e Vino" />Piza e Vino
+            <input type="checkbox" name="brands[]" value="Piza e Vino" disabled />Piza e Vino — not open yet
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Doppio Zero" />Doppio Zero
+            <input type="checkbox" name="brands[]" value="Doppio Zero" disabled />Doppio Zero — not open yet
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Modern Tailors" />Modern Tailors
+            <input type="checkbox" name="brands[]" value="Modern Tailors" disabled />Modern Tailors — not open yet
           </label>
 
         </div>
@@ -629,14 +629,14 @@
         </div>
 
         <button type="submit" class="submit-btn">Register now</button>
-        <p class="form-note">We will be in touch after review to confirm your access.</p>
+        <p class="form-note">Check your inbox and spam folder for your account-setup and course welcome emails. Already registered but still waiting or missing a course? Email ask@spurcorpacademy.com; do not register again.</p>
       </form>
 
       <!-- Success state -->
       <div id="success-msg">
         <div class="success-bar"></div>
         <h3>You are registered.</h3>
-        <p>We will confirm your access and brand scope after review.<br />Keep an eye on your inbox.</p>
+        <p>Your registration has been received and automatic enrolment is being processed.<br />Check your inbox and spam folder for your Academy emails. New learners receive a link to set a password; existing learners use their current password.</p>
         <a class="success-btn" href="https://learn.spurcorpacademy.com/hub/library">Sign in to the Academy</a>
         <p class="access-help">Trouble with access? Email <a href="mailto:ask@spurcorpacademy.com">ask@spurcorpacademy.com</a> with your brand and store names.</p>
       </div>
@@ -684,9 +684,7 @@
         if (resp.ok) {
           form.style.display       = 'none';
           successMsg.style.display = 'block';
-          window.setTimeout(function () {
-            window.location.assign('https://learn.spurcorpacademy.com/hub/library');
-          }, 6000);
+          // Keep the confirmation visible while automated enrolment processes.
         } else {
           btn.textContent = 'Register now';
           btn.disabled    = false;
