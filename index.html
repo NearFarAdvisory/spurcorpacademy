@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register | Spur Corp Brand Academy</title>
   <meta name="description" content="Build your brand knowledge and apply it every day. Register for Spur Corp Brand Academy access." />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --ink:      #181F23;
-      --off-white:#F5F3F2;
+      --off-white:#F5F3F3;
       --crimson:  #B51D28;
       --blue:     #5683CA;
       --pink:     #F59AE3;
@@ -31,7 +31,7 @@
 
     /* ── Header ── */
     header {
-      background: var(--ink);
+      background: var(--off-white);
       padding: 20px 32px;
       display: flex;
       align-items: center;
@@ -43,6 +43,12 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+    }
+
+    .partnership-lockup {
+      display: block;
+      width: min(360px, 62vw);
+      height: auto;
     }
 
     /* Four-bar Academy mark */
@@ -75,21 +81,21 @@
     }
 
     .header-link {
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 600;
       font-size: 0.8125rem;
-      color: rgba(245,243,242,0.55);
+      color: var(--ink);
       text-decoration: none;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
 
-    .header-link:hover { color: var(--off-white); }
+    .header-link:hover { color: var(--crimson); }
 
     /* ── Rule ── */
     .colour-rule {
       height: 3px;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--crimson) 50%, var(--pink) 100%);
+      background: var(--pink);
     }
 
     /* ── Hero band ── */
@@ -100,7 +106,7 @@
     }
 
     .eyebrow {
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 0.6875rem;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -110,8 +116,8 @@
     }
 
     .hero h1 {
-      font-family: 'Jost', sans-serif;
-      font-weight: 700;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 800;
       font-size: clamp(2rem, 6vw, 3.25rem);
       line-height: 1.08;
       letter-spacing: -0.02em;
@@ -131,31 +137,6 @@
       color: rgba(245,243,242,0.65);
       max-width: 420px;
       margin: 0 auto 24px;
-    }
-
-    .launch-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(245,243,242,0.07);
-      border: 1px solid rgba(245,243,242,0.15);
-      color: rgba(245,243,242,0.6);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-    }
-
-    .launch-pill::before {
-      content: '';
-      display: block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--pink);
     }
 
     /* ── Form section ── */
@@ -190,6 +171,113 @@
       color: var(--mid);
     }
 
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 26px 0 34px;
+    }
+
+    .route-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-top: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .route-card:nth-child(2) { border-top-color: var(--crimson); }
+    .route-card:nth-child(3) { border-top-color: var(--pink); }
+
+    .route-card strong {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .route-card p {
+      color: var(--mid);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+    }
+
+    .route-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+
+    .route-card .route-arrow {
+      display: inline-block;
+      flex: 0 0 auto;
+      text-decoration: none;
+    }
+
+    .route-choice {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .route-option {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 13px;
+      cursor: pointer;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    .route-option:has(input:checked) {
+      border-color: var(--blue);
+      background: var(--blue-tint, #E7EEF8);
+    }
+
+    .route-option input { margin-top: 3px; accent-color: var(--blue); }
+
+    .route-option strong { display: block; font-weight: 700; }
+
+    .conditional-field[hidden] { display: none; }
+
+    textarea {
+      width: 100%;
+      min-height: 88px;
+      resize: vertical;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(86,131,202,0.12);
+    }
+
+    @media (max-width: 680px) {
+      .route-grid { grid-template-columns: 1fr; }
+      .route-choice { grid-template-columns: 1fr; }
+      header { padding: 16px 20px; }
+      .partnership-lockup { width: min(285px, 68vw); }
+    }
+
     /* Track numbers — numbered pill labels */
     .section-label {
       display: flex;
@@ -210,7 +298,7 @@
       width: 22px;
       height: 22px;
       border-radius: 100px;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 600;
       font-size: 0.6875rem;
       flex-shrink: 0;
@@ -221,7 +309,7 @@
     .section-pill.pink   { background: var(--pink);    color: var(--ink); }
 
     .section-label-text {
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 600;
       font-size: 0.75rem;
       letter-spacing: 0.12em;
@@ -252,7 +340,7 @@
 
     label {
       display: block;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 0.8125rem;
       font-weight: 600;
       letter-spacing: 0.03em;
@@ -304,7 +392,7 @@
 
     /* Brands grid */
     .brands-label {
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 0.8125rem;
       font-weight: 600;
       letter-spacing: 0.03em;
@@ -380,7 +468,7 @@
       color: #fff;
       border: none;
       border-radius: 6px;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 600;
       font-size: 0.9375rem;
       letter-spacing: 0.04em;
@@ -443,7 +531,7 @@
       background: var(--crimson);
       color: #fff;
       border-radius: 6px;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 600;
       font-size: 0.9375rem;
       letter-spacing: 0.04em;
@@ -499,17 +587,7 @@
   <!-- Header -->
   <header>
     <a href="https://learn.spurcorpacademy.com/hub/library" class="wordmark">
-      <!-- Four-bar Academy mark — blue, crimson, pink, ink -->
-      <svg class="mark-svg" width="28" height="34" viewBox="0 0 280 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="0"  y="0"   width="196" height="48" rx="10" fill="#5683CA"/>
-        <rect x="0"  y="55"  width="174" height="48" rx="10" fill="#B51D28"/>
-        <rect x="0"  y="110" width="213" height="48" rx="10" fill="#F59AE3"/>
-        <rect x="0"  y="165" width="69"  height="48" rx="10" fill="#F5F3F2"/>
-      </svg>
-      <div class="wordmark-text">
-        <span class="wordmark-title">Brand Academy</span>
-        <span class="wordmark-sub">Spur Corporation</span>
-      </div>
+      <img class="partnership-lockup" src="assets/brand-academy-spurcorp-lockup.png" alt="Brand Academy in partnership with Spur Corporation" />
     </a>
     <a href="https://learn.spurcorpacademy.com/hub/library" class="header-link">Open your Library →</a>
   </header>
@@ -522,19 +600,50 @@
     <p class="eyebrow">Registration</p>
     <h1>Your next step starts<br />with the <span class="accent">brand.</span></h1>
     <p class="hero-sub">Build your brand knowledge and apply it to the decisions you make every day.</p>
-    <div class="launch-pill">The Academy is now live</div>
   </section>
 
   <!-- Form -->
   <section class="form-section">
     <div class="form-wrap">
       <div class="form-header">
-        <h2>Register for access.</h2>
-        <p>Complete the form once. Valid registrations automatically create your Academy access and enrol you in your selected live brand courses.</p>
-        <p class="form-note">Six brand courses are live: Spur Steak Ranches, Panarottis, John Dory’s, RocoMamas, The Hussar Grill and Casa Bella. Other portfolio courses are not open yet; email ask@spurcorpacademy.com if your brand is unavailable.</p>
+        <h2>Choose the route that matches where you are.</h2>
+        <p>Register below if you have not joined the new Brand Academy—even if you completed training with the previous provider. Use the same form again only when you need another brand added to your new Brand Academy account.</p>
+        <p class="form-note">Six brand courses are live: Spur Steak Ranches, Panarottis, John Dory’s, RocoMamas, The Hussar Grill and Casa Bella. If your brand is unavailable, contact your brand manager.</p>
+      </div>
+
+      <div class="route-grid" aria-label="Academy access routes">
+        <article class="route-card">
+          <strong>1. Register for the new Brand Academy</strong>
+          <p>Complete the form even if you trained with the previous provider. After review, your account and approved live courses are added.</p>
+          <a href="#reg-form"><span>Register below</span><span class="route-arrow" aria-hidden="true">↓</span></a>
+        </article>
+        <article class="route-card">
+          <strong>2. Continue learning</strong>
+          <p>Already active in the new Brand Academy? Sign in with your existing email and password, then open the course from Library.</p>
+          <a href="https://learn.spurcorpacademy.com/hub/library"><span>Open your Library</span><span class="route-arrow" aria-hidden="true">→</span></a>
+        </article>
+        <article class="route-card">
+          <strong>3. Add another brand</strong>
+          <p>Complete the form with the exact email already linked to your Academy account and select only the additional brand course.</p>
+          <a href="#reg-form"><span>Request another brand</span><span class="route-arrow" aria-hidden="true">↓</span></a>
+        </article>
       </div>
 
       <form id="reg-form" action="https://formspree.io/f/mvkpqweb" method="POST" novalidate>
+
+        <div class="field">
+          <span class="brands-label">What do you need today? <span class="req">*</span></span>
+          <div class="route-choice">
+            <label class="route-option">
+              <input type="radio" name="learner_route" value="New learner" required />
+              <span><strong>Register for the new Brand Academy</strong>Choose this if you have not registered here before, including if you trained with the previous provider.</span>
+            </label>
+            <label class="route-option">
+              <input type="radio" name="learner_route" value="Existing learner adding a brand" required />
+              <span><strong>Add another brand</strong>Choose this only if you already have an account in the new Brand Academy and need access to an additional brand.</span>
+            </label>
+          </div>
+        </div>
 
         <!-- Section 1 — Your details -->
         <div class="section-label">
@@ -560,8 +669,56 @@
         </div>
 
         <div class="field">
-          <label for="organisation">Organisation / Agency name <span class="req">*</span></label>
-          <input type="text" id="organisation" name="organisation" required placeholder="Your agency or company name" />
+          <label for="organisation-select">Organisation / Agency name <span class="req">*</span></label>
+          <select id="organisation-select" required>
+            <option value="" disabled selected>Select your agency or organisation</option>
+            <option>Absolute Design</option>
+            <option>Alzu Retail</option>
+            <option>AM Group</option>
+            <option>Blob and Bash</option>
+            <option>Breede Design</option>
+            <option>Candy Floss</option>
+            <option>Cashmere Marketing</option>
+            <option>Cheeseburger Media</option>
+            <option>Creative Touch</option>
+            <option>Creatory</option>
+            <option>Cynergy</option>
+            <option>Digi 3</option>
+            <option>Digital Star</option>
+            <option>DtD Marketing</option>
+            <option>Eventus Marketing</option>
+            <option>Fuzion Digital</option>
+            <option>Glaudine Hainsworth</option>
+            <option>HowZaT Multimedia Management</option>
+            <option>Humble Consulting</option>
+            <option>Jean-Pierre Roux</option>
+            <option>Jetvest</option>
+            <option>JIMBU</option>
+            <option>Kinetix Africa</option>
+            <option>Klick Kollective</option>
+            <option>LAMB</option>
+            <option>LYFTED Media</option>
+            <option>Maxi Design</option>
+            <option>Micronection</option>
+            <option>Milk Marketing</option>
+            <option>OMM Social</option>
+            <option>RA Creative</option>
+            <option>Semicolon</option>
+            <option>Tall Pink Gumboots</option>
+            <option>The Kolab Co</option>
+            <option>Uproar Media</option>
+            <option>Vanilla OMM</option>
+            <option>Verzento</option>
+            <option>White Hat Media</option>
+            <option>XS Promotions</option>
+            <option value="Other">Other / not listed</option>
+          </select>
+          <input type="hidden" id="organisation" name="organisation" />
+        </div>
+
+        <div class="field conditional-field" id="organisation-other-wrap" hidden>
+          <label for="organisation-other">Enter your organisation or agency name <span class="req">*</span></label>
+          <input type="text" id="organisation-other" placeholder="Organisation or agency name" />
         </div>
 
         <div class="field">
@@ -606,37 +763,42 @@
           <label class="brand-check">
             <input type="checkbox" name="brands[]" value="Casa Bella" />Casa Bella
           </label>
-          <label class="brand-check">
-            <input type="checkbox" name="brands[]" value="Spur Grill and Go" disabled />Spur Grill and Go — not open yet
+          <label class="brand-check brand-check--dim">
+            <input type="checkbox" name="brands[]" value="Spur Grill and Go" disabled />Spur Grill and Go
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Piza e Vino" disabled />Piza e Vino — not open yet
+            <input type="checkbox" name="brands[]" value="Piza e Vino" disabled />Piza e Vino
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Doppio Zero" disabled />Doppio Zero — not open yet
+            <input type="checkbox" name="brands[]" value="Doppio Zero" disabled />Doppio Zero
           </label>
           <label class="brand-check brand-check--dim">
-            <input type="checkbox" name="brands[]" value="Modern Tailors" disabled />Modern Tailors — not open yet
+            <input type="checkbox" name="brands[]" value="Modern Tailors" disabled />Modern Tailors
           </label>
 
+        </div>
+
+        <div class="field">
+          <label for="stores">Relevant store name(s) or number(s) <span class="req">*</span></label>
+          <textarea id="stores" name="stores" required placeholder="List the stores you support. Separate multiple stores with commas."></textarea>
         </div>
 
         <!-- Section 3 — Submit -->
         <div class="section-label">
           <div class="section-pill pink">3</div>
-          <span class="section-label-text">Register</span>
+          <span class="section-label-text">Submit request</span>
           <div class="section-rule"></div>
         </div>
 
-        <button type="submit" class="submit-btn">Register now</button>
-        <p class="form-note">Check your inbox and spam folder for your account-setup and course welcome emails. Already registered but still waiting or missing a course? Email ask@spurcorpacademy.com; do not register again.</p>
+        <button type="submit" class="submit-btn">Submit Academy request</button>
+        <p class="form-note">Use the exact email linked to your Academy account. If you are continuing an existing course or reporting a missing course, do not submit this form—open Library or email ask@spurcorpacademy.com.</p>
       </form>
 
       <!-- Success state -->
       <div id="success-msg">
         <div class="success-bar"></div>
-        <h3>You are registered.</h3>
-        <p>Your registration has been received and automatic enrolment is being processed.<br />Check your inbox and spam folder for your Academy emails. New learners receive a link to set a password; existing learners use their current password.</p>
+        <h3 id="success-title">Your request has been received.</h3>
+        <p id="success-copy">Your Academy access is being processed.<br />Check your inbox and spam folder for your Academy emails.</p>
         <a class="success-btn" href="https://learn.spurcorpacademy.com/hub/library">Sign in to the Academy</a>
         <p class="access-help">Trouble with access? Email <a href="mailto:ask@spurcorpacademy.com">ask@spurcorpacademy.com</a> with your brand and store names.</p>
       </div>
@@ -660,9 +822,30 @@
   <script>
     const form       = document.getElementById('reg-form');
     const successMsg = document.getElementById('success-msg');
+    const successTitle = document.getElementById('success-title');
+    const successCopy = document.getElementById('success-copy');
+    const organisationSelect = document.getElementById('organisation-select');
+    const organisationValue = document.getElementById('organisation');
+    const organisationOtherWrap = document.getElementById('organisation-other-wrap');
+    const organisationOther = document.getElementById('organisation-other');
+
+    function syncOrganisation() {
+      const isOther = organisationSelect.value === 'Other';
+      organisationOtherWrap.hidden = !isOther;
+      organisationOther.required = isOther;
+      if (!isOther) organisationOther.value = '';
+      organisationValue.value = isOther ? organisationOther.value.trim() : organisationSelect.value;
+    }
+
+    organisationSelect.addEventListener('change', syncOrganisation);
+    organisationOther.addEventListener('input', syncOrganisation);
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
+
+      syncOrganisation();
+
+      if (!form.reportValidity()) return;
 
       const checked = form.querySelectorAll('input[type="checkbox"]:checked');
       if (checked.length === 0) {
@@ -682,16 +865,24 @@
         });
 
         if (resp.ok) {
+          const route = form.querySelector('input[name="learner_route"]:checked').value;
+          if (route === 'Existing learner adding a brand') {
+            successTitle.textContent = 'Your additional brand request has been received.';
+            successCopy.innerHTML = 'Your selected brand enrolment is being processed.<br />Continue using your existing Academy email and password. Your current course progress remains linked to the same account.';
+          } else {
+            successTitle.textContent = 'Your registration has been received.';
+            successCopy.innerHTML = 'Your Academy account and selected course enrolments are being processed.<br />Check your inbox and spam folder for the email that lets you set your password.';
+          }
           form.style.display       = 'none';
           successMsg.style.display = 'block';
           // Keep the confirmation visible while automated enrolment processes.
         } else {
-          btn.textContent = 'Register now';
+          btn.textContent = 'Submit Academy request';
           btn.disabled    = false;
           alert('Something went wrong. Please try again or email us directly.');
         }
       } catch {
-        btn.textContent = 'Register now';
+        btn.textContent = 'Submit Academy request';
         btn.disabled    = false;
         alert('Something went wrong. Please check your connection and try again.');
       }
