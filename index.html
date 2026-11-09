@@ -664,6 +664,12 @@
 
       <form id="reg-form" action="https://formspree.io/f/mvkpqweb" method="POST" novalidate>
 
+        <!-- Journey attribution: included in the Formspree notification and intake record. -->
+        <input type="hidden" id="entry-point" name="entry_point" />
+        <input type="hidden" id="entry-url" name="entry_url" />
+        <input type="hidden" id="referring-url" name="referring_url" />
+        <input type="hidden" id="submission-timestamp" name="submission_timestamp" />
+
         <div class="field">
           <span class="brands-label">What do you need today? <span class="req">*</span></span>
           <div class="route-choice">
@@ -861,6 +867,32 @@
     const organisationValue = document.getElementById('organisation');
     const organisationOtherWrap = document.getElementById('organisation-other-wrap');
     const organisationOther = document.getElementById('organisation-other');
+    const entryPoint = document.getElementById('entry-point');
+    const entryUrl = document.getElementById('entry-url');
+    const referringUrl = document.getElementById('referring-url');
+    const submissionTimestamp = document.getElementById('submission-timestamp');
+
+    function syncJourneyAttribution() {
+      const params = new URLSearchParams(window.location.search);
+      const explicitSource = (params.get('source') || params.get('utm_source') || '').trim();
+      let inferredSource = 'Direct registration form';
+
+      if (!explicitSource && document.referrer) {
+        try {
+          const referrer = new URL(document.referrer);
+          if (referrer.hostname === 'learn.spurcorpacademy.com') inferredSource = 'Academy website';
+          else if (referrer.hostname === 'assethub.spurcorp.com') inferredSource = 'Asset Hub';
+          else inferredSource = `External referral — ${referrer.hostname}`;
+        } catch {
+          inferredSource = 'External referral';
+        }
+      }
+
+      entryPoint.value = explicitSource || inferredSource;
+      entryUrl.value = window.location.href;
+      referringUrl.value = document.referrer || 'None';
+      submissionTimestamp.value = new Date().toISOString();
+    }
 
     function syncOrganisation() {
       const isOther = organisationSelect.value === 'Other';
@@ -872,11 +904,13 @@
 
     organisationSelect.addEventListener('change', syncOrganisation);
     organisationOther.addEventListener('input', syncOrganisation);
+    syncJourneyAttribution();
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
       syncOrganisation();
+      syncJourneyAttribution();
 
       if (!form.reportValidity()) return;
 
